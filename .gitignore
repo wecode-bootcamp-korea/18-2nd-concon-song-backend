@@ -266,3 +266,5 @@ Temporary Items
 
 my_settings.py
 *.csv
+db_uploaders.py
+convers_data_sheet/

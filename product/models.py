@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 
 
@@ -16,7 +14,6 @@ class Product(models.Model):
     created_at       = models.DateTimeField(auto_now_add=True)
     updated_at       = models.DateTimeField(auto_now=True)
     stock            = models.IntegerField(default=10)
-    item_code        = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     color            = models.CharField(max_length=100)
 
     class Meta:
