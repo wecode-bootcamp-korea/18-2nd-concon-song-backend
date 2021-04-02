@@ -3,9 +3,9 @@ from product.models import ProductSize, Product
 
 
 class Account(models.Model):
-    email    = models.EmailField(max_length=200, unique=True)
-    password = models.CharField(max_length=200)
-    name     = models.CharField(max_length=50)
+    email    = models.EmailField(max_length=200, null = True)
+    nickname = models.CharField(max_length=200)
+    kakao_id = models.CharField(max_length=500, unique=True)
 
     class Meta:
         db_table = 'accounts'
@@ -24,7 +24,7 @@ class Review(models.Model):
     product    = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating     = models.IntegerField(default=0)
     content    = models.TextField()
-    image      = models.CharField(max_length=400) 
+    image      = models.ImageField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
