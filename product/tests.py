@@ -42,7 +42,6 @@ class ProductDetailTestCase(TestCase):
         Size.objects.all().delete()
         ProductSize.objects.all().delete()
         Image.objects.all().delete()
-        ProductDetail.objects.all().delete()
 
     def test_productdetail_get_success(self):
         response = client.get('/product/1')
