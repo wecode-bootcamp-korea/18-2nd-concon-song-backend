@@ -21,7 +21,7 @@ class Product(models.Model):
     price            = models.DecimalField(max_digits=18, decimal_places=0)
     created_at       = models.DateTimeField(auto_now_add=True)
     updated_at       = models.DateTimeField(auto_now=True)
-    color_id         = models.ForeignKey(Color, on_delete=models.CASCADE)
+    color            = models.ForeignKey(Color, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'products'
