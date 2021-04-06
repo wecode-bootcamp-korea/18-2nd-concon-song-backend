@@ -7,24 +7,24 @@ class Collection(models.Model):
     class Meta:
         db_table = 'collections'
 
-class Product(models.Model):
-    collection       = models.ForeignKey(Collection, on_delete=models.CASCADE)
-    name             = models.CharField(max_length=100)
-    price            = models.DecimalField(max_digits=18, decimal_places=0)
-    created_at       = models.DateTimeField(auto_now_add=True)
-    updated_at       = models.DateTimeField(auto_now=True)
-    stock            = models.IntegerField(default=10)
-    color            = models.CharField(max_length=100)
-
-    class Meta:
-        db_table = 'products'
-
 
 class Color(models.Model):
     name = models.CharField(max_length=100)
 
     class Meta:
         db_table = 'colors'
+
+
+class Product(models.Model):
+    collection       = models.ForeignKey(Collection, on_delete=models.CASCADE)
+    name             = models.CharField(max_length=100)
+    price            = models.DecimalField(max_digits=18, decimal_places=0)
+    created_at       = models.DateTimeField(auto_now_add=True)
+    updated_at       = models.DateTimeField(auto_now=True)
+    color_id         = models.ForeignKey(Color, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'products'
 
 
 class Size(models.Model):
@@ -36,6 +36,7 @@ class Size(models.Model):
 
 
 class ProductSize(models.Model):
+    stock   = models.IntegerField(default=10)
     size    = models.ForeignKey(Size, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
@@ -58,3 +59,4 @@ class Image(models.Model):
 
     class Meta:
         db_table = 'product_images'
+
